@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "122132572603",
+    "project_id": "sfire-8963a",
+    "storage_bucket": "sfire-8963a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122132572603:android:54e07a51604476b79dbc9e",
+        "android_client_info": {
+          "package_name": "com.sfire.sfire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122132572603-a3b89ti1ukips40lvat1r711s4v1ua1e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sfire.sfire",
+            "certificate_hash": "712f8db92291ec970fdc66c7b31a3110c47efa10"
+          }
+        },
+        {
+          "client_id": "122132572603-7n3vcb3um0nih1atfouvpuo43a6fsl4c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFZRzN_s7vB288PwsSdCDSMzCYFA3C2co"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122132572603-7n3vcb3um0nih1atfouvpuo43a6fsl4c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
