@@ -4,6 +4,8 @@ import 'package:sfire/app/modules/home/bindings/home_binding.dart';
 import 'package:sfire/app/modules/home/views/home_view.dart';
 import 'package:sfire/app/modules/login/bindings/login_binding.dart';
 import 'package:sfire/app/modules/login/views/login_view.dart';
+import 'package:sfire/app/modules/otp/bindings/otp_binding.dart';
+import 'package:sfire/app/modules/otp/views/otp_view.dart';
 import 'package:sfire/app/modules/reset_password/bindings/reset_password_binding.dart';
 import 'package:sfire/app/modules/reset_password/views/reset_password_view.dart';
 import 'package:sfire/app/modules/signup/bindings/signup_binding.dart';
@@ -36,6 +38,11 @@ class AppPages {
       name: _Paths.RESET_PASSWORD,
       page: () => ResetPasswordView(),
       binding: ResetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTP,
+      page: () => OtpView(),
+      binding: OtpBinding(),
     ),
   ];
 }

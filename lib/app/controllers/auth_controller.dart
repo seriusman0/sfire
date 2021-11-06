@@ -3,13 +3,67 @@ import 'package:get/get.dart';
 import 'package:sfire/app/routes/app_pages.dart';
 
 class AuthController extends GetxController {
-  
   FirebaseAuth auth = FirebaseAuth.instance;
   // Stream<User?> streamAuthStatus() {
   //   return auth.authStateChanges();
   // }
 
   Stream<User?> get streamAuthStatus => auth.authStateChanges();
+
+  void loginWithOTP(String otp, String verifId) async {
+    try {
+      PhoneAuthCredential myCredential = await PhoneAuthProvider.credential(
+        verificationId: verifId,
+        smsCode: otp,
+      );
+      await auth.signInWithCredential(myCredential);
+      Get.offAllNamed(Routes.HOME);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  void loginPhone(String phone) async {
+    await auth.verifyPhoneNumber(
+      phoneNumber: phone,
+      verificationCompleted: (PhoneAuthCredential) {
+        print("Phone Auth Credential".toUpperCase());
+        print("=====================");
+        print(PhoneAuthCredential);
+        print("=====================");
+      },
+      verificationFailed: (error) => Get.defaultDialog(
+        title: "Terjadi Kesalahan",
+        middleText: error.message!,
+      ),
+      codeSent: (verificationId, int? resendToken) {
+        print("codeSent".toUpperCase());
+        print("verificationId");
+        print(verificationId);
+        print("______________________");
+        print("Resend Token");
+        print(resendToken);
+        print("======================");
+        Get.toNamed(Routes.OTP, arguments: verificationId);
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        print("codeAutoRetrievalTimeout".toUpperCase());
+        print("verificationId");
+        print(verificationId);
+        print("=====================");
+      },
+    );
+  }
+
+  Future<void> loginAnonimous() async {
+    try {
+      UserCredential myUser = await auth.signInAnonymously();
+      print(myUser);
+      Get.offAllNamed(Routes.HOME);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   void resetPassword(String email) async {
     if (email != "" && GetUtils.isEmail(email)) {
