@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:sfire/app/modules/add_product/bindings/add_product_binding.dart';
+import 'package:sfire/app/modules/add_product/views/add_product_view.dart';
 import 'package:sfire/app/modules/home/bindings/home_binding.dart';
 import 'package:sfire/app/modules/home/views/home_view.dart';
 import 'package:sfire/app/modules/login/bindings/login_binding.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.OTP,
       page: () => OtpView(),
       binding: OtpBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_PRODUCT,
+      page: () => AddProductView(),
+      binding: AddProductBinding(),
     ),
   ];
 }
