@@ -72,6 +72,16 @@ class LoginView extends GetView<LoginController> {
             ElevatedButton(
                 onPressed: () => authC.loginPhone(controller.phoneC.text),
                 child: Text("Send OTP ")),
+            SizedBox(height: 10),
+            Divider(color: Colors.black),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => authC.loginGoogle(),
+              child: Text("LOGIN WITH GOOGLE "),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.red[900],
+              ),
+            ),
           ],
         ),
       ),

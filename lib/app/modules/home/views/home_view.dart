@@ -39,15 +39,19 @@ class HomeView extends GetView<HomeController> {
       body: StreamBuilder<QuerySnapshot<Object?>>(
         stream: controller.streamData(),
         builder: (context, snapshot) {
-          var listAllDocs = snapshot.data!.docs;
+          var listAllDocs = snapshot.data?.docs;
           if (snapshot.connectionState == ConnectionState.active) {
             return ListView.builder(
-                itemCount: listAllDocs.length,
+                itemCount: listAllDocs?.length,
                 itemBuilder: (content, index) => ListTile(
+                      onTap: () => Get.toNamed(
+                        Routes.EDIT_PRODUCT,
+                        arguments: listAllDocs?[index].id,
+                      ),
                       title: Text(
-                          "${(listAllDocs[index].data() as Map<String, dynamic>)["name"]}"),
+                          "${(listAllDocs?[index].data() as Map<String, dynamic>)["name"]}"),
                       subtitle: Text(
-                          "Rp ${(listAllDocs[index].data() as Map<String, dynamic>)["price"]}"),
+                          "Rp ${(listAllDocs?[index].data() as Map<String, dynamic>)["price"]}"),
                     ));
           }
           return Center(child: CircularProgressIndicator());

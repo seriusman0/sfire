@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sfire/app/routes/app_pages.dart';
 
 class AuthController extends GetxController {
@@ -9,6 +10,25 @@ class AuthController extends GetxController {
   // }
 
   Stream<User?> get streamAuthStatus => auth.authStateChanges();
+
+  void loginGoogle() async {
+    try {
+      GoogleSignIn _googleSignIn = GoogleSignIn();
+      GoogleSignInAccount? myAcc = await _googleSignIn.signIn();
+      if (myAcc != null) {
+        print(myAcc);
+      } else
+        () {
+          throw "Belum memiliki akun google";
+        };
+    } catch (error) {
+      Get.defaultDialog(
+        title: "Terjadi Kesalahan",
+        middleText: "${error.toString()}",
+      );
+      print(error);
+    }
+  }
 
   void loginWithOTP(String otp, String verifId) async {
     try {
